@@ -11,13 +11,13 @@
   -->
   <title data-strapi="site-settings" data-field="site_name" data-attr="text">Loading...</title>
   <!-- Pull site_name from /api/site-settings and set the document title -->
-  <meta name="title" content="Grilli - Amazing & Delicious Food">
+  <meta name="title" content="The Sail and anchor - Amazing & Delicious Food">
   <meta name="description" content="This is a Restaurant html template made by codewithsadee">
 
   <!-- 
     - favicon
   -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
 
   <!-- 
     - google font link
@@ -29,14 +29,14 @@
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
   <!-- 
     - preload images
   -->
-  <link rel="preload" as="image" href="./assets/images/hero-slider-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-3.jpg">
+  <link rel="preload" as="image" href="/assets/images/hero-slider-1.jpg">
+  <link rel="preload" as="image" href="/assets/images/hero-slider-2.jpg">
+  <link rel="preload" as="image" href="/assets/images/hero-slider-3.jpg">
 
 </head>
 
@@ -48,7 +48,7 @@
 
   <div class="preload" data-preaload>
     <div class="circle"></div>
-    <p class="text">Grilli</p>
+    <p class="text">The Sail and anchor</p>
   </div>
 
   <!-- 
@@ -106,7 +106,7 @@
     <div class="container">
 
       <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
+        <img src="/assets/images/logo.svg" width="160" height="50" alt="The Sail and anchor - Home">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -116,13 +116,13 @@
         </button>
 
         <a href="#" class="logo">
-          <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
+          <img src="/assets/images/logo.svg" width="160" height="50" alt="The Sail and anchor - Home">
         </a>
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#home" class="navbar-link hover-underline active">
+            <a href="/" class="navbar-link hover-underline">
               <div class="separator"></div>
 
               <span class="span">Home</span>
@@ -130,7 +130,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#menu" class="navbar-link hover-underline">
+            <a href="/menu" class="navbar-link hover-underline active">
               <div class="separator"></div>
 
               <span class="span">Menus</span>
@@ -146,10 +146,20 @@
           </li>
 
           <li class="navbar-item">
+            <a href="/events" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Events
+              </span>
+            </a>
+          </li>
+
+          <li class="navbar-item">
             <a href="#" class="navbar-link hover-underline">
               <div class="separator"></div>
 
-              <span class="span">Our Chefs</span>
+              <span class="span">Our Staff
+              </span>
             </a>
           </li>
 
@@ -203,6 +213,16 @@
 
     </div>
   </header>
+
+      <!-- 
+        - #Fake section
+      -->
+
+      <section class="section">
+
+      </section>
+
+
 <!-- 
   - #SPECIAL DISH
 -->
@@ -214,13 +234,13 @@
                 data-unwrap="children">
         <template>
             <div class="special-dish-banner">
-            <img data-field="image.formats.large.url" data-attr="src"
+            <img data-field="image.url" data-attr="src"
                 width="940" height="900" loading="lazy" alt="special dish" class="img-cover">
             </div>
 
             <div class="special-dish-content bg-black-10">
             <div class="container">
-                <img src="./assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
+                <img src="/assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
                 <p class="section-subtitle label-2">Special Dish</p>
                 <h2 class="headline-1 section-title" data-field="title" data-attr="text">Loading...</h2>
                 <p class="section-text" data-field="menu_item.description" data-attr="text"></p>
@@ -251,8 +271,8 @@
             </div>
             </div>
 
-            <img src="./assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
-            <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
+            <img src="/assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
+            <img src="/assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
         </template>
         </section>
 
@@ -305,9 +325,9 @@
             </ul>
 
 
-          <img src="./assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape"
+          <img src="/assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape"
             class="shape shape-2 move-anim">
-          <img src="./assets/images/shape-6.png" width="343" height="345" loading="lazy" alt="shape"
+          <img src="/assets/images/shape-6.png" width="343" height="345" loading="lazy" alt="shape"
             class="shape shape-3 move-anim">
 
         </div>
@@ -318,14 +338,13 @@
       -->
 
       <section class="section testi text-center has-bg-image"
-        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials">
+        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials" >
         <div class="container">
 
           <div class="quote">”</div>
 
-          <p class="headline-2 testi-text">
-            I wanted to thank you for inviting me down for that amazing dinner the other night. The food was
-            extraordinary.
+          <p class="headline-2 testi-text" data-strapi="review" data-field="Review" data-attr="text">
+            Loading...
           </p>
 
           <div class="wrapper">
@@ -335,10 +354,10 @@
           </div>
 
           <div class="profile">
-            <img src="./assets/images/testi-avatar.jpg" width="100" height="100" loading="lazy" alt="Sam Jhonson"
+            <img data-strapi="review" data-field="Profile.formats.thumbnail.url" data-attr="src" width="100" height="100" loading="lazy" alt="Sam Jhonson"
               class="img">
 
-            <p class="label-2 profile-name">Sam Jhonson</p>
+            <p class="label-2 profile-name" data-strapi="review" data-field="Name" data-attr="text">Loading...</p>
           </div>
 
         </div>
@@ -430,7 +449,7 @@
 
             </form>
 
-            <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
+            <div class="form-right text-center" style="background-image: url('/assets/images/form-pattern.png')">
 
               <h2 class="headline-1 text-center">Contact Us</h2>
 
@@ -483,7 +502,7 @@
               <div class="feature-card">
 
                 <div class="card-icon">
-                  <img src="./assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
+                  <img src="/assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
                 </div>
 
                 <h3 class="title-2 card-title">Hygienic Food</h3>
@@ -497,7 +516,7 @@
               <div class="feature-card">
 
                 <div class="card-icon">
-                  <img src="./assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
+                  <img src="/assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
                 </div>
 
                 <h3 class="title-2 card-title">Fresh Environment</h3>
@@ -511,7 +530,7 @@
               <div class="feature-card">
 
                 <div class="card-icon">
-                  <img src="./assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
+                  <img src="/assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
                 </div>
 
                 <h3 class="title-2 card-title">Skilled Chefs</h3>
@@ -525,7 +544,7 @@
               <div class="feature-card">
 
                 <div class="card-icon">
-                  <img src="./assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
+                  <img src="/assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
                 </div>
 
                 <h3 class="title-2 card-title">Event & Party</h3>
@@ -537,10 +556,10 @@
 
           </ul>
 
-          <img src="./assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape"
+          <img src="/assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape"
             class="shape shape-1">
 
-          <img src="./assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape"
+          <img src="/assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape"
             class="shape shape-2">
 
         </div>
@@ -551,7 +570,7 @@
   -->
 
   <footer class="footer section has-bg-image text-center"
-    style="background-image: url('./assets/images/footer-bg.jpg')">
+    style="background-image: url('/assets/images/footer-bg.jpg')">
     <div class="container">
 
       <div class="footer-top grid-list">
@@ -559,7 +578,7 @@
         <div class="footer-brand has-before has-after">
 
           <a href="#" class="logo">
-            <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="grilli home">
+            <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
           </a>
 
           <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text">
@@ -673,9 +692,22 @@
   <!-- 
     - custom js link
   -->
-  <script src="./assets/js/script.js"></script>
-  <script src="./assets/js/strapi.js"></script>
-  <script src="./assets/js/strapi-hours.js"></script>
+
+<script>
+    // For local testing only
+    window.STRAPI_API_URL = 'https://admin.thesailandanchor.co.nz';
+    window.STRAPI_TOKEN = 'd5b34421f7c8cd61db5acc1cc6b322031660b5cd0ed95ad0187c8a5cc2ae84dc1530c9392596549c8cf9660579cf047d5e5fbbc6cc6b361572adcc148bd413cec92d840c112154088edb64a9c617cf199acf9040c88f8755079374642759bb9509759422033012b7c2e5e0e86dde590661a5d38e70741916ad1785c3eddb341c';
+  </script>
+  <script src="/assets/js/strapi.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      StrapiBinder.init();
+    });
+  </script>
+
+  <script src="/assets/js/script.js"></script>
+  <script src="/assets/js/strapi.js"></script>
+  <script src="/assets/js/strapi-hours.js"></script>
 
   <!-- 
     - ionicon link

@@ -11,8 +11,8 @@
   -->
   <title data-strapi="site-settings" data-field="site_name" data-attr="text">Loading...</title>
   <!-- Pull site_name from /api/site-settings and set the document title -->
-  <meta name="title" content="Grilli - Amazing & Delicious Food">
-  <meta name="description" content="This is a Restaurant html template made by codewithsadee">
+  <meta name="title" content="The Sail and Anchior">
+  <meta name="description" content="This is the Sail and Anchor restaurant website.">
 
   <!-- 
     - favicon
@@ -31,13 +31,6 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- 
-    - preload images
-  -->
-  <link rel="preload" as="image" href="./assets/images/hero-slider-1.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-2.jpg">
-  <link rel="preload" as="image" href="./assets/images/hero-slider-3.jpg">
-
 </head>
 
 <body id="top">
@@ -48,12 +41,8 @@
 
   <div class="preload" data-preaload>
     <div class="circle"></div>
-    <p class="text">Grilli</p>
+    <p class="text">The Sail and Anchor</p>
   </div>
-
-
-
-
 
   <!-- 
     - #TOP BAR
@@ -102,10 +91,6 @@
     </div>
   </div>
 
-
-
-
-
   <!-- 
     - #HEADER
   -->
@@ -113,8 +98,8 @@
   <header class="header" data-header>
     <div class="container">
 
-      <a href="#" class="logo">
-        <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
+      <a href="/" class="logo">
+        <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -123,14 +108,14 @@
           <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
         </button>
 
-        <a href="#" class="logo">
-          <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
+        <a href="/" class="logo">
+          <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
         </a>
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#home" class="navbar-link hover-underline active">
+            <a href="/" class="navbar-link hover-underline active">
               <div class="separator"></div>
 
               <span class="span">Home</span>
@@ -138,7 +123,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#menu" class="navbar-link hover-underline">
+            <a href="/menu" class="navbar-link hover-underline">
               <div class="separator"></div>
 
               <span class="span">Menus</span>
@@ -154,10 +139,20 @@
           </li>
 
           <li class="navbar-item">
+            <a href="/events" class="navbar-link hover-underline">
+              <div class="separator"></div>
+
+              <span class="span">Events
+              </span>
+            </a>
+          </li>
+
+          <li class="navbar-item">
             <a href="#" class="navbar-link hover-underline">
               <div class="separator"></div>
 
-              <span class="span">Our Chefs</span>
+              <span class="span">Our Staff
+              </span>
             </a>
           </li>
 
@@ -212,10 +207,6 @@
     </div>
   </header>
 
-
-
-
-
   <main>
     <article>
 
@@ -230,7 +221,7 @@
           <li class="slider-item active" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img data-strapi="hero-image" data-field="Hero_Photos[0].formats.large.url" data-attr="src" width="1880" height="950" alt="" class="img-cover">
+              <img data-strapi="homepage" data-field="Hero_Photos[0].url" data-populate="Hero_Photos" data-attr="src" width="1880" height="950" alt="" class="img-cover">
             </div>
 
             <p class="label-2 section-subtitle slider-reveal">Tradational & Hygine</p>
@@ -255,7 +246,7 @@
           <li class="slider-item" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img data-strapi="hero-image" data-field="Hero_Photos[1].formats.large.url" data-attr="src" width="1880" height="950" alt="" class="img-cover">
+              <img data-strapi="homepage" data-field="Hero_Photos[1].url" data-populate="Hero_Photos" data-attr="src" width="1880" height="950" alt="" class="img-cover">
             </div>
 
             <p class="label-2 section-subtitle slider-reveal">delightful experience</p>
@@ -280,7 +271,7 @@
           <li class="slider-item" data-hero-slider-item>
 
             <div class="slider-bg">
-              <img data-strapi="hero-image" data-field="Hero_Photos[2].formats.large.url" data-attr="src" width="1880" height="950" alt="" class="img-cover">
+              <img data-strapi="homepage" data-field="Hero_Photos[2].url" data-populate="Hero_Photos" data-attr="src" width="1880" height="950" alt="" class="img-cover">
             </div>
 
             <p class="label-2 section-subtitle slider-reveal">amazing & delicious</p>
@@ -320,10 +311,6 @@
 
       </section>
 
-
-
-
-
       <!-- 
         - #SERVICE
       -->
@@ -335,9 +322,8 @@
 
           <h2 class="headline-1 section-title">We Offer Top Notch</h2>
 
-          <p class="section-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys
-            standard dummy text ever.
+          <p class="section-text" data-strapi="homepage" data-field="Flavours.Short_text_on_what_we_offer" data-attr="text">
+            Loading...
           </p>
 
           <ul class="grid-list">
@@ -347,7 +333,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Breakfast"
+                    <img data-strapi="homepage" data-field="Flavours.Dinner.url" data-populate="Flavours.Dinner" data-attr="src" width="285" height="336" loading="lazy" alt="Breakfast"
                       class="img-cover">
                   </figure>
                 </a>
@@ -355,10 +341,10 @@
                 <div class="card-content">
 
                   <h3 class="title-4 card-title">
-                    <a href="#">Breakfast</a>
+                    <a href="#">Dinner</a>
                   </h3>
 
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
+                  <a href="/menu" class="btn-text hover-underline label-2">View Menu</a>
 
                 </div>
 
@@ -370,7 +356,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Appetizers"
+                    <img data-strapi="homepage" data-field="Flavours.Dessert.url" data-populate="Flavours.Dessert" data-attr="src" width="285" height="336" loading="lazy" alt="Breakfast"
                       class="img-cover">
                   </figure>
                 </a>
@@ -378,10 +364,10 @@
                 <div class="card-content">
 
                   <h3 class="title-4 card-title">
-                    <a href="#">Appetizers</a>
+                    <a href="#">Desserts</a>
                   </h3>
 
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
+                  <a href="/menu" class="btn-text hover-underline label-2">View Menu</a>
 
                 </div>
 
@@ -393,7 +379,7 @@
 
                 <a href="#" class="has-before hover:shine">
                   <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                    <img src="./assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Drinks"
+                    <img data-strapi="homepage" data-field="Flavours.Drinks.url" data-populate="Flavours.Drinks" data-attr="src" width="285" height="336" loading="lazy" alt="Breakfast"
                       class="img-cover">
                   </figure>
                 </a>
@@ -404,7 +390,7 @@
                     <a href="#">Drinks</a>
                   </h3>
 
-                  <a href="#" class="btn-text hover-underline label-2">View Menu</a>
+                  <a href="/menu" class="btn-text hover-underline label-2">View Menu</a>
 
                 </div>
 
@@ -421,10 +407,6 @@
         </div>
       </section>
 
-
-
-
-
       <!-- 
         - #ABOUT
       -->
@@ -438,10 +420,8 @@
 
             <h2 class="headline-1 section-title">Every Fla vor Tells a Story</h2>
 
-            <p class="section-text">
-              Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the
-              industrys standard dummy text ever since the when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book It has survived not only five centuries, but also the leap into.
+            <p class="section-text" data-strapi="homepage" data-field="Our_story.Our_story_short" data-populate="Our_story" data-attr="text">
+              Loading...
             </p>
 
             <a href="#" class="btn btn-primary">
@@ -454,11 +434,11 @@
 
           <figure class="about-banner">
 
-            <img src="./assets/images/about-banner.jpg" width="570" height="570" loading="lazy" alt="about banner"
+            <img data-strapi="homepage" data-field="Our_story.Environment.url" data-populate="Our_story.Environment" data-attr="src" width="570" height="570" loading="lazy" alt="about banner"
               class="w-100" data-parallax-item data-parallax-speed="1">
 
             <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-              <img src="./assets/images/about-abs-image.jpg" width="285" height="285" loading="lazy" alt=""
+              <img data-strapi="homepage" data-field="Our_story.Close_up.url" data-populate="Our_story.Close_up" data-attr="src" width="285" height="285" loading="lazy" alt=""
                 class="w-100">
             </div>
 
@@ -474,11 +454,9 @@
       </section>
 
 
-
-
-<!-- 
-  - #SPECIAL DISH
--->
+      <!-- 
+        - #SPECIAL DISH
+      -->
 
         <section class="special-dish text-center"
                 aria-labelledby="dish-label"
@@ -487,7 +465,7 @@
                 data-unwrap="children">
         <template>
             <div class="special-dish-banner">
-            <img data-field="image.formats.large.url" data-attr="src"
+            <img data-field="image.url" data-attr="src"
                 width="940" height="900" loading="lazy" alt="special dish" class="img-cover">
             </div>
 
@@ -528,7 +506,6 @@
             <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
         </template>
         </section>
-
 
       <!-- 
         - #MENU
@@ -577,7 +554,7 @@
             </template>
             </ul>
 
-          <a href="#" class="btn btn-primary">
+          <a href="/menu/" class="btn btn-primary">
             <span class="text text-1">View All Menu</span>
 
             <span class="text text-2" aria-hidden="true">View All Menu</span>
@@ -591,20 +568,18 @@
         </div>
       </section>
 
-
       <!-- 
         - #TESTIMONIALS
       -->
 
       <section class="section testi text-center has-bg-image"
-        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials">
+        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials" >
         <div class="container">
 
           <div class="quote">”</div>
 
-          <p class="headline-2 testi-text">
-            I wanted to thank you for inviting me down for that amazing dinner the other night. The food was
-            extraordinary.
+          <p class="headline-2 testi-text" data-strapi="homepage" data-field="Review.review_text" data-populate="Review" data-attr="text">
+            Loading...
           </p>
 
           <div class="wrapper">
@@ -614,18 +589,14 @@
           </div>
 
           <div class="profile">
-            <img src="./assets/images/testi-avatar.jpg" width="100" height="100" loading="lazy" alt="Sam Jhonson"
+            <img data-strapi="homepage" data-field="Review.profile.url" data-populate="Review.profile" data-attr="src" width="100" height="100" loading="lazy" alt="Sam Jhonson"
               class="img">
 
-            <p class="label-2 profile-name">Sam Jhonson</p>
+            <p class="label-2 profile-name" data-strapi="homepage" data-field="Review.name" data-populate="Review" data-attr="text">Loading...</p>
           </div>
 
         </div>
       </section>
-
-
-
-
 
       <!-- 
         - #RESERVATION
@@ -745,10 +716,6 @@
         </div>
       </section>
 
-
-
-
-
       <!-- 
         - #FEATURES
       -->
@@ -771,7 +738,7 @@
 
                 <h3 class="title-2 card-title">Hygienic Food</h3>
 
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
+                <p class="label-1 card-text" data-strapi="homepage" data-field="Why_choose_us.Hygienic_food" data-populate="Why_choose_us">Loading...</p>
 
               </div>
             </li>
@@ -785,7 +752,7 @@
 
                 <h3 class="title-2 card-title">Fresh Environment</h3>
 
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
+                <p class="label-1 card-text" data-strapi="homepage" data-field="Why_choose_us.Fresh_environment" data-populate="Why_choose_us">Loading...</p>
 
               </div>
             </li>
@@ -799,7 +766,7 @@
 
                 <h3 class="title-2 card-title">Skilled Chefs</h3>
 
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
+                <p class="label-1 card-text" data-strapi="homepage" data-field="Why_choose_us.Skilled_chefs" data-populate="Why_choose_us">Loading...</p>
 
               </div>
             </li>
@@ -813,7 +780,7 @@
 
                 <h3 class="title-2 card-title">Event & Party</h3>
 
-                <p class="label-1 card-text">Lorem Ipsum is simply dummy printing and typesetting.</p>
+                <p class="label-1 card-text" data-strapi="homepage" data-field="Why_choose_us.Event_n_party" data-populate="Why_choose_us">Loading...</p>
 
               </div>
             </li>
@@ -828,10 +795,6 @@
 
         </div>
       </section>
-
-
-
-
 
       <!-- 
         - #EVENT
@@ -923,13 +886,9 @@
     </article>
   </main>
 
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
+      <!-- 
+        - #FOOTER
+      -->
 
   <footer class="footer section has-bg-image text-center"
     style="background-image: url('./assets/images/footer-bg.jpg')">
@@ -939,8 +898,8 @@
 
         <div class="footer-brand has-before has-after">
 
-          <a href="#" class="logo">
-            <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="grilli home">
+          <a href="/" class="logo">
+            <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
           </a>
 
           <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text">
@@ -1043,10 +1002,6 @@
     </div>
   </footer>
 
-
-
-
-
   <!-- 
     - #BACK TO TOP
   -->
@@ -1055,16 +1010,13 @@
     <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
   </a>
 
-
-
-
-
   <!-- 
     - custom js link
   -->
+
   <script src="./assets/js/script.js"></script>
   <script src="./assets/js/strapi.js"></script>
-  <script src="./assets/js/strapi-.js"></script>
+  <script src="./assets/js/strapi-hours.js"></script>
 
   <!-- 
     - ionicon link

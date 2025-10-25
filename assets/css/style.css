@@ -1188,7 +1188,7 @@ body.nav-active { overflow: hidden; }
 
 .profile .img {
   margin-inline: auto;
-  border-radius: var(--radius-circle);
+  border-radius: 50%;
   margin-block-end: 15px;
 }
 
