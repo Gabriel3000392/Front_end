@@ -1,6 +1,6 @@
 async function loadOpeningHours() {
   try {
-    const res = await fetch('http://127.0.0.1:1337/api/opening-hours1'); // change endpoint if needed
+    const res = await fetch('https://admin.thesailandanchor.co.nz/api/opening-hours1'); // change endpoint if needed
     const json = await res.json();
     const hours = json.data;
 
