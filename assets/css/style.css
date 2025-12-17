@@ -44,6 +44,94 @@
   /* keep your typography, spacing, shadows, transitions unchanged */
 }
 
+/* Event Card Container */
+.event-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Image Banner */
+.event-card .card-banner {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: calc(450 / 350 * 100%); /* maintain aspect ratio */
+  overflow: hidden;
+}
+
+.event-card .card-banner img.img-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card Content */
+.event-card .card-content {
+  padding: 16px;
+  text-align: center;
+}
+
+.event-card .card-title {
+  font-size: 2rem;
+  margin: 8px 0;
+  color: #111;
+}
+
+.event-card .card-subtitle {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.event-card .card-description {
+  font-size: 0.875rem;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+/* Event Date and Time */
+.event-datetime {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.event-datetime .publish-date {
+  font-weight: 600;
+}
+
+.event-datetime .event-time::before {
+  content: "• ";
+  margin-right: 2px;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .event-card .card-title {
+    font-size: 1rem;
+  }
+
+  .event-card .card-description,
+  .event-datetime {
+    font-size: 0.75rem;
+  }
+}
+
 
 /* Buttons */
 .btn {
@@ -1847,10 +1935,13 @@ textarea.input-field {
    * SPECIAL DISH
    */
 
+  .special-dish > .__repeat_instance {
+    display: contents;
+  }
+
   .special-dish {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    text-align: left;
   }
 
   .special-dish-content { padding-inline: 50px 25px; }

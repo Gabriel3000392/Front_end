@@ -105,8 +105,8 @@
   <header class="header" data-header>
     <div class="container">
 
-      <a href="#" class="logo">
-        <img src="/assets/images/logo.svg" width="160" height="50" alt="The Sail and anchor - Home">
+      <a href="/" class="logo">
+        <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -115,8 +115,8 @@
           <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
         </button>
 
-        <a href="#" class="logo">
-          <img src="/assets/images/logo.svg" width="160" height="50" alt="The Sail and anchor - Home">
+        <a href="/" class="logo">
+          <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
         </a>
 
         <ul class="navbar-list">
@@ -288,41 +288,73 @@
 
           <h2 class="headline-1 section-title text-center">Delicious Menu</h2>
 
-          <ul class="grid-list" data-repeat="menu-items1" data-limit="100">
+          <ul class=""
+              data-repeat="menu-categories1"
+              data-limit="50"
+              data-populate="menu_items.photo">
+
             <template>
-                <!-- attach available to the LI so we can style sold out -->
-                <li class="menu-item" data-field="available" data-attr="data-available">
-                <div class="menu-card hover:card">
 
-                    <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                    <!-- try thumbnail, if your images do not have formats you can change to photo.url -->
-                    <img data-field="photo.formats.thumbnail.url" data-attr="src" width="100" height="100" loading="lazy" alt="" class="img-cover">
-                    </figure>
+              <!-- CATEGORY HEADER -->
+              <li class="menu-category">
+                <h3 class="headline-1 section-title text-center" data-field="name"></h3>
 
-                    <div>
-                    <div class="title-wrapper">
-                        <h3 class="title-3">
-                        <span class="card-title" data-field="title" data-attr="text">Item</span>
-                        </h3>
+                <!-- ITEMS INSIDE THIS CATEGORY -->
+                <ul class="grid-list menu-items"
+                    data-repeat-inner="menu_items">
 
-                        <!-- show first tag like GF if present, leave empty if none -->
-                        <span class="badge label-1" data-field="tags[0].name" data-attr="text"></span>
+                  <template>
 
-                        <!-- price with a dollar prefix -->
-                        <span class="span title-2" data-field="price" data-attr="text" data-prefix="$"></span>
-                    </div>
+                    <li class="menu-item"
+                        data-field="available"
+                        data-attr="data-available">
 
-                    <!-- description can be null, the binding will set empty text -->
-                    <p class="card-text label-1" data-field="description" data-attr="text"></p>
+                      <div class="menu-card hover:card">
 
-                    <!-- Sold out badge, only show when available is false (CSS below handles it) -->
-                    <span class="badge label-1 soldout" data-field="available" data-attr="data-available">Sold out</span>
-                    </div>
+                        <figure class="card-banner img-holder" style="--width:100;--height:100;">
+                          <img data-field="photo.formats.thumbnail.url"
+                              data-attr="src"
+                              width="100"
+                              height="100"
+                              loading="lazy"
+                              alt=""
+                              class="img-cover">
+                        </figure>
 
-                </div>
-                </li>
+                        <div>
+                          <div class="title-wrapper">
+                            <h3 class="title-3">
+                              <span class="card-title" data-field="title"></span>
+                            </h3>
+
+                            <span class="badge label-1"
+                                  data-field="tags[0].name"></span>
+
+                            <span class="span title-2"
+                                  data-field="price"
+                                  data-prefix="$"></span>
+                          </div>
+
+                          <p class="card-text label-1"
+                            data-field="description"></p>
+
+                          <span class="badge label-1 soldout"
+                                data-field="available"
+                                data-attr="data-available">
+                            Sold out
+                          </span>
+                        </div>
+
+                      </div>
+                    </li>
+
+                  </template>
+                </ul>
+              </li>
+
             </template>
-            </ul>
+          </ul>
+
 
 
           <img src="/assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape"
@@ -338,7 +370,7 @@
       -->
 
       <section class="section testi text-center has-bg-image"
-        style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials" >
+        style="background-image: url('/assets/images/testimonial-bg.jpg')" aria-label="testimonials" >
         <div class="container">
 
           <div class="quote">”</div>
@@ -367,123 +399,154 @@
         - #RESERVATION
       -->
 
-      <section class="reservation">
-        <div class="container">
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "TKmI_QxR6Je9-MDea",
+      });
+   })();
+</script>
 
-          <div class="form reservation-form bg-black-10">
+<section class="reservation">
+  <div class="container">
+    <div class="form reservation-form bg-black-10">
 
-            <form action="" class="form-left">
+      <!-- NOTE: id used by the JS below -->
+      <form id="reservation-form" class="form-left">
 
-              <h2 class="headline-1 text-center">Online Reservation</h2>
+        <h2 class="headline-1 text-center">Online Reservation</h2>
 
-              <p class="form-text text-center">
-                Booking request <a href="tel:+88123123456" class="link">+88-123-123456</a>
-                or fill out the order form
-              </p>
+        <p class="form-text text-center">
+          Booking request
+          <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="link">
+            <span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+          </a>
+          or fill out the order form
+        </p>
 
-              <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
+        <div class="input-wrapper">
+          <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field" required>
 
-                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
-              </div>
+          <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field" required>
+        </div>
 
-              <div class="input-wrapper">
+        <div class="input-wrapper">
 
-                <div class="icon-wrapper">
-                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          <div class="icon-wrapper">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
-                  <select name="person" class="input-field">
-                    <option value="1-person">1 Person</option>
-                    <option value="2-person">2 Person</option>
-                    <option value="3-person">3 Person</option>
-                    <option value="4-person">4 Person</option>
-                    <option value="5-person">5 Person</option>
-                    <option value="6-person">6 Person</option>
-                    <option value="7-person">7 Person</option>
-                  </select>
+            <!-- changed name to 'people' -->
+            <select name="person" class="input-field" required>
+              <option value="1">1 Person</option>
+              <option value="2">2 Person</option>
+              <option value="3">3 Person</option>
+              <option value="4">4 Person</option>
+              <option value="5">5 Person</option>
+              <option value="6">6 Person</option>
+              <option value="7">7 Person</option>
+            </select>
 
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+          </div>
 
-                <div class="icon-wrapper">
-                  <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+          <div class="icon-wrapper">
+            <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
 
-                  <input type="date" name="reservation-date" class="input-field">
+            <!-- changed name to 'reservation_date' -->
+            <input type="date" name="reservation_date" class="input-field" required>
 
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+          </div>
 
-                <div class="icon-wrapper">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+          <div class="icon-wrapper">
+            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
-                  <select name="person" class="input-field">
-                    <option value="08:00am">08 : 00 am</option>
-                    <option value="09:00am">09 : 00 am</option>
-                    <option value="010:00am">10 : 00 am</option>
-                    <option value="011:00am">11 : 00 am</option>
-                    <option value="012:00am">12 : 00 am</option>
-                    <option value="01:00pm">01 : 00 pm</option>
-                    <option value="02:00pm">02 : 00 pm</option>
-                    <option value="03:00pm">03 : 00 pm</option>
-                    <option value="04:00pm">04 : 00 pm</option>
-                    <option value="05:00pm">05 : 00 pm</option>
-                    <option value="06:00pm">06 : 00 pm</option>
-                    <option value="07:00pm">07 : 00 pm</option>
-                    <option value="08:00pm">08 : 00 pm</option>
-                    <option value="09:00pm">09 : 00 pm</option>
-                    <option value="10:00pm">10 : 00 pm</option>
-                  </select>
+            <!-- changed name to 'time' -->
+            <select name="time" class="input-field" required>
+              <option value="16:00">04 : 00 pm</option>
+              <option value="16:30">04 : 30 pm</option>
+              <option value="17:00">05 : 00 pm</option>
+              <option value="17:30">05 : 30 pm</option>
+              <option value="18:00">06 : 00 pm</option>
+              <option value="18:30">06 : 30 pm</option>
+              <option value="19:00">07 : 00 pm</option>
+              <option value="19:30">07 : 30 pm</option>
+              <option value="20:00">08 : 00 pm</option>
+              <option value="20:30">08 : 30 pm</option>
+              <option value="21:00">09 : 00 pm</option>
+            </select>
 
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-              </div>
-
-              <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
-
-              <button type="submit" class="btn btn-secondary">
-                <span class="text text-1">Book A Table</span>
-
-                <span class="text text-2" aria-hidden="true">Book A Table</span>
-              </button>
-
-            </form>
-
-            <div class="form-right text-center" style="background-image: url('/assets/images/form-pattern.png')">
-
-              <h2 class="headline-1 text-center">Contact Us</h2>
-
-              <p class="contact-label">Booking Request</p>
-
-              <a href="tel:+88123123456" class="body-1 contact-number hover-underline">+88-123-123456</a>
-
-              <div class="separator"></div>
-
-              <p class="contact-label">Location</p>
-
-              <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text">
-              </address>
-
-              <p class="contact-label">Lunch Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                11.00 am - 2.30pm
-              </p>
-
-              <p class="contact-label">Dinner Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                05.00 pm - 10.00pm
-              </p>
-
-            </div>
-
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
           </div>
 
         </div>
-      </section>
+
+        <textarea name="message" placeholder="Message" autocomplete="off" class="input-field" rows="4"></textarea>
+
+        <button type="submit" class="btn btn-secondary">
+          <span class="text text-1">Book A Table</span>
+          <span class="text text-2" aria-hidden="true">Book A Table</span>
+        </button>
+
+        <!-- small status area -->
+        <p id="reservation-status" role="status" aria-live="polite" style="margin-top:0.5rem; font-size:0.95rem;"></p>
+
+      </form>
+
+      <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
+        <h2 class="headline-1 text-center">Contact Us</h2>
+
+        <p class="contact-label">Booking Request</p>
+
+        <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-1 contact-number hover-underline">
+          <span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+        </a>
+
+        <div class="separator"></div>
+
+        <p class="contact-label">Location</p>
+
+        <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text"></address>
+
+        <p class="contact-label">Open Time</p>
+
+        <span class="body-4" id="open-hours">Loading...</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Email sending logic -->
+<script>
+  (function () {
+    const form = document.getElementById('reservation-form');
+    const status = document.getElementById('reservation-status');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      status.textContent = 'Sending reservation...';
+
+      // sendForm maps form field names directly to your EmailJS template variables
+      emailjs.sendForm('service_00lxf56', 'template_vvf5z4h', form)
+        .then(function () {
+          status.textContent = 'Reservation sent successfully. Thank you.';
+          form.reset();
+          submitBtn.disabled = false;
+        }, function (error) {
+          console.error('EmailJS error', error);
+          status.textContent = 'Failed to send reservation, please try again or call us.';
+          submitBtn.disabled = false;
+        });
+    });
+  })();
+</script>
 
       <!-- 
         - #FEATURES
@@ -570,14 +633,14 @@
   -->
 
   <footer class="footer section has-bg-image text-center"
-    style="background-image: url('/assets/images/footer-bg.jpg')">
+    style="background-image: url('./assets/images/footer-bg.jpg')">
     <div class="container">
 
       <div class="footer-top grid-list">
 
         <div class="footer-brand has-before has-after">
 
-          <a href="#" class="logo">
+          <a href="/" class="logo">
             <img data-strapi="site-settings" data-field="logo.url" data-attr="src" width="160" height="50" loading="lazy" alt="The Sail and anchor home">
           </a>
 
@@ -586,10 +649,13 @@
 
           <a data-strapi="site-settings" data-field="contact_email" data-attr="href" data-prefix="mailto:" class="body-4 contact-link"><span data-strapi="site-settings" data-field="contact_email" data-attr="text">Loading...</span></a>
 
-          <a href="tel:+88123123456" class="body-4 contact-link">Booking Request : +88-123-123456</a>
+          <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-4 contact-link">
 
-          <p class="body-4">
-            Open : 09:00 am - 01:00 pm
+            <span class="body-4 contact-link" data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+          </a>
+
+          <p class="body-4" id="open-hours">
+            Loading...
           </p>
 
           <div class="wrapper">
@@ -601,7 +667,6 @@
           <p class="title-1">Get News & Offers</p>
 
           <p class="label-1">
-            Subscribe us & Get <span class="span">25% Off.</span>
           </p>
 
           <form action="" class="input-wrapper">
@@ -692,18 +757,6 @@
   <!-- 
     - custom js link
   -->
-
-<script>
-    // For local testing only
-    window.STRAPI_API_URL = 'https://admin.thesailandanchor.co.nz';
-    window.STRAPI_TOKEN = 'd5b34421f7c8cd61db5acc1cc6b322031660b5cd0ed95ad0187c8a5cc2ae84dc1530c9392596549c8cf9660579cf047d5e5fbbc6cc6b361572adcc148bd413cec92d840c112154088edb64a9c617cf199acf9040c88f8755079374642759bb9509759422033012b7c2e5e0e86dde590661a5d38e70741916ad1785c3eddb341c';
-  </script>
-  <script src="/assets/js/strapi.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      StrapiBinder.init();
-    });
-  </script>
 
   <script src="/assets/js/script.js"></script>
   <script src="/assets/js/strapi.js"></script>

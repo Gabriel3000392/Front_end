@@ -241,98 +241,66 @@
         <div class="container">
 
           <p class="section-subtitle label-2 text-center">Recent Updates</p>
-
           <h2 class="section-title headline-1 text-center">Upcoming Event</h2>
 
-          <ul class="grid-list">
+          <ul class="grid-list"
+              data-repeat="events"
+              data-limit="10"
+              data-populate="Photo">
 
-            <li>
-              <div class="event-card has-before hover:shine">
+            <template>
+              <li>
+                <div class="event-card has-before hover:shine">
 
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="/assets/images/event-1.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+                  <!-- Image Banner -->
+                  <div class="card-banner img-holder" style="--width:350;--height:450;">
+                    <img data-field="Photo.url"
+                        data-attr="src"
+                        loading="lazy"
+                        alt=""
+                        class="img-cover">
+                  </div>
 
-                  <time class="publish-date label-2" datetime="2022-09-15">15/09/2022</time>
+                  <!-- Card Content -->
+                  <div class="card-content">
+                    <!-- Subtitle (optional) -->
+                    <p class="card-subtitle label-2 text-center"></p>
+
+                    <!-- Event Name -->
+                    <h3 class="card-title title-2 text-center" data-field="Name"></h3>
+
+                    <!-- Event Description -->
+                    <p class="card-description label-1" data-field="Description.0.children.0.text"></p>
+
+                    <!-- Event Date and Time -->
+                    <div class="event-datetime label-2 text-center">
+                      <time class="publish-date" data-field="date" data-format="date"></time>
+                      <span class="event-time" data-field="start_time"></span>
+                      <span class="event-time" data-field="end_time"></span>
+                    </div>
+                  </div>
+
                 </div>
+              </li>
+            </template>
 
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Food, Flavour</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="/assets/images/event-2.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-08">08/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Healthy Food</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="/assets/images/event-3.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-03">03/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Recipie</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
 
           </ul>
-
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View Our Blog</span>
-
-            <span class="text text-2" aria-hidden="true">View Our Blog</span>
-          </a>
 
         </div>
       </section>
 
+
+
     </article>
   </main>
-
-
-
-
 
   <!-- 
     - #FOOTER
   -->
 
   <footer class="footer section has-bg-image text-center"
-    style="background-image: url('/assets/images/footer-bg.jpg')">
+    style="background-image: url('./assets/images/footer-bg.jpg')">
     <div class="container">
 
       <div class="footer-top grid-list">
@@ -348,10 +316,13 @@
 
           <a data-strapi="site-settings" data-field="contact_email" data-attr="href" data-prefix="mailto:" class="body-4 contact-link"><span data-strapi="site-settings" data-field="contact_email" data-attr="text">Loading...</span></a>
 
-          <a href="tel:+88123123456" class="body-4 contact-link">Booking Request : +88-123-123456</a>
+          <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-4 contact-link">
 
-          <p class="body-4">
-            Open : 09:00 am - 01:00 pm
+            <span class="body-4 contact-link" data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+          </a>
+
+          <p class="body-4" id="open-hours">
+            Loading...
           </p>
 
           <div class="wrapper">
@@ -363,7 +334,6 @@
           <p class="title-1">Get News & Offers</p>
 
           <p class="label-1">
-            Subscribe us & Get <span class="span">25% Off.</span>
           </p>
 
           <form action="" class="input-wrapper">
@@ -455,26 +425,9 @@
     <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
   </a>
 
-
-
-
-
   <!-- 
     - custom js link
   -->
-
-  <script>
-    // For local testing only
-    window.STRAPI_API_URL = 'https://admin.thesailandanchor.co.nz';
-    window.STRAPI_TOKEN = 'd5b34421f7c8cd61db5acc1cc6b322031660b5cd0ed95ad0187c8a5cc2ae84dc1530c9392596549c8cf9660579cf047d5e5fbbc6cc6b361572adcc148bd413cec92d840c112154088edb64a9c617cf199acf9040c88f8755079374642759bb9509759422033012b7c2e5e0e86dde590661a5d38e70741916ad1785c3eddb341c';
-  </script>
-  <script src="/assets/js/strapi.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      StrapiBinder.init();
-    });
-  </script>
-
 
   <script src="/assets/js/script.js"></script>
   <script src="/assets/js/strapi.js"></script>

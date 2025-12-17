@@ -242,23 +242,46 @@
           setValue(el, val, attr);
         });
 
-        if (unwrap) {
-          const tmp = document.createElement('div');
-          tmp.appendChild(frag);
-          Array.from(tmp.childNodes).forEach(node => {
-            if (node.nodeType === 1) node.classList.add('__repeat_child');
-            c.appendChild(node);
-          });
-        } else {
-          const wrapper = document.createElement('div');
-          wrapper.className = '__repeat_instance';
-          wrapper.appendChild(frag);
-          c.appendChild(wrapper);
-        }
+        const wrapper = document.createElement('div');
+        wrapper.className = '__repeat_instance';
+        wrapper.appendChild(frag);
+
+        // NEW: render nested repeats using this record
+        bindInnerRepeats(wrapper, rec);
+
+        c.appendChild(wrapper);
       }
     });
   }
+  function bindInnerRepeats(rootEl, record) {
+    rootEl.querySelectorAll('[data-repeat-inner]').forEach(container => {
+      const field = container.getAttribute('data-repeat-inner');
+      const data = record[field];
 
+      if (!Array.isArray(data)) return;
+
+      const template = container.querySelector('template');
+      if (!template) return;
+
+      container.querySelectorAll('.__repeat_instance').forEach(n => n.remove());
+
+      data.forEach(item => {
+        const frag = template.content.cloneNode(true);
+
+        frag.querySelectorAll('[data-field]').forEach(el => {
+          const attr = el.getAttribute('data-attr') || 'text';
+          const path = el.getAttribute('data-field');
+          const val  = path.split('.').reduce((acc, k) => acc?.[k], item);
+          setValue(el, val, attr);
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = '__repeat_instance';
+        wrapper.appendChild(frag);
+        container.appendChild(wrapper);
+      });
+    });
+  }
   // Scans DOM, fetches all endpoints once, binds values
   async function init() {
     // endpoint -> { populateMap }
@@ -299,6 +322,7 @@
         }
       })
     );
+    
 
     bindSingles(cache);
     bindRepeats(cache);

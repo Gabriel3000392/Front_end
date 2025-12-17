@@ -172,7 +172,7 @@
           <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text">
           </address>
 
-          <p class="body-4 navbar-text">Open: 9.30 am - 2.30pm</p>
+          <span class="span body-4 navbar-text" id="open-hours">Loading...</span>
 
           <a data-strapi="site-settings" data-field="contact_email" data-attr="href" data-prefix="mailto:" class="topbar-item link">
             <span class="span" data-strapi="site-settings" data-field="contact_email" data-attr="text">Loading...</span>
@@ -601,120 +601,156 @@
       <!-- 
         - #RESERVATION
       -->
+        
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "TKmI_QxR6Je9-MDea",
+      });
+   })();
+</script>
 
-      <section class="reservation">
-        <div class="container">
+<section class="reservation">
+  <div class="container">
+    <div class="form reservation-form bg-black-10">
 
-          <div class="form reservation-form bg-black-10">
+      <!-- NOTE: id used by the JS below -->
+      <form id="reservation-form" class="form-left">
 
-            <form action="" class="form-left">
+        <h2 class="headline-1 text-center">Online Reservation</h2>
 
-              <h2 class="headline-1 text-center">Online Reservation</h2>
+        <p class="form-text text-center">
+          Booking request
+          <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="link">
+            <span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+          </a>
+          or fill out the order form
+        </p>
 
-              <p class="form-text text-center">
-                Booking request <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="link"><span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span></a>
-                or fill out the order form
-              </p>
+        <div class="input-wrapper">
+          <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field" required>
 
-              <div class="input-wrapper">
-                <input type="text" name="name" placeholder="Your Name" autocomplete="off" class="input-field">
+          <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field" required>
+        </div>
 
-                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="off" class="input-field">
-              </div>
+        <div class="input-wrapper">
 
-              <div class="input-wrapper">
+          <div class="icon-wrapper">
+            <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
-                <div class="icon-wrapper">
-                  <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+            <!-- changed name to 'people' -->
+            <select name="person" class="input-field" required>
+              <option value="1">1 Person</option>
+              <option value="2">2 Person</option>
+              <option value="3">3 Person</option>
+              <option value="4">4 Person</option>
+              <option value="5">5 Person</option>
+              <option value="6">6 Person</option>
+              <option value="7">7 Person</option>
+            </select>
 
-                  <select name="person" class="input-field">
-                    <option value="1-person">1 Person</option>
-                    <option value="2-person">2 Person</option>
-                    <option value="3-person">3 Person</option>
-                    <option value="4-person">4 Person</option>
-                    <option value="5-person">5 Person</option>
-                    <option value="6-person">6 Person</option>
-                    <option value="7-person">7 Person</option>
-                  </select>
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+          </div>
 
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
+          <div class="icon-wrapper">
+            <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
 
-                <div class="icon-wrapper">
-                  <ion-icon name="calendar-clear-outline" aria-hidden="true"></ion-icon>
+            <!-- changed name to 'reservation_date' -->
+            <input type="date" name="reservation_date" class="input-field" required>
 
-                  <input type="date" name="reservation-date" class="input-field">
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
+          </div>
 
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
+          <div class="icon-wrapper">
+            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
-                <div class="icon-wrapper">
-                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+            <!-- changed name to 'time' -->
+            <select name="time" class="input-field" required>
+              <option value="16:00">04 : 00 pm</option>
+              <option value="16:30">04 : 30 pm</option>
+              <option value="17:00">05 : 00 pm</option>
+              <option value="17:30">05 : 30 pm</option>
+              <option value="18:00">06 : 00 pm</option>
+              <option value="18:30">06 : 30 pm</option>
+              <option value="19:00">07 : 00 pm</option>
+              <option value="19:30">07 : 30 pm</option>
+              <option value="20:00">08 : 00 pm</option>
+              <option value="20:30">08 : 30 pm</option>
+              <option value="21:00">09 : 00 pm</option>
+            </select>
 
-                  <select name="person" class="input-field">
-                    <option value="04:00pm">04 : 00 pm</option>
-                    <option value="05:00pm">04 : 30 pm</option>
-                    <option value="06:00pm">05 : 00 pm</option>
-                    <option value="07:00pm">05 : 30 pm</option>
-                    <option value="08:00pm">06 : 00 pm</option>
-                    <option value="09:00pm">06 : 30 pm</option>
-                    <option value="04:00pm">07 : 00 pm</option>
-                    <option value="05:00pm">07 : 30 pm</option>
-                    <option value="06:00pm">08 : 00 pm</option>
-                    <option value="07:00pm">08 : 30 pm</option>
-                    <option value="08:00pm">09 : 00 pm</option>
-                  </select>
-
-                  <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
-                </div>
-
-              </div>
-
-              <textarea name="message" placeholder="Message" autocomplete="off" class="input-field"></textarea>
-
-              <button type="submit" class="btn btn-secondary">
-                <span class="text text-1">Book A Table</span>
-
-                <span class="text text-2" aria-hidden="true">Book A Table</span>
-              </button>
-
-            </form>
-
-            <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
-
-              <h2 class="headline-1 text-center">Contact Us</h2>
-
-              <p class="contact-label">Booking Request</p>
-
-              <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-1 contact-number hover-underline"><span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span></a>
-
-              <div class="separator"></div>
-
-              <p class="contact-label">Location</p>
-
-              <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text">
-              </address>
-
-              <p class="contact-label">Lunch Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                11.00 am - 2.30pm
-              </p>
-
-              <p class="contact-label">Dinner Time</p>
-
-              <p class="body-4">
-                Monday to Sunday <br>
-                05.00 pm - 10.00pm
-              </p>
-
-            </div>
-
+            <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
           </div>
 
         </div>
-      </section>
+
+        <textarea name="message" placeholder="Message" autocomplete="off" class="input-field" rows="4"></textarea>
+
+        <button type="submit" class="btn btn-secondary">
+          <span class="text text-1">Book A Table</span>
+          <span class="text text-2" aria-hidden="true">Book A Table</span>
+        </button>
+
+        <!-- small status area -->
+        <p id="reservation-status" role="status" aria-live="polite" style="margin-top:0.5rem; font-size:0.95rem;"></p>
+
+      </form>
+
+      <div class="form-right text-center" style="background-image: url('./assets/images/form-pattern.png')">
+        <h2 class="headline-1 text-center">Contact Us</h2>
+
+        <p class="contact-label">Booking Request</p>
+
+        <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-1 contact-number hover-underline">
+          <span data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+        </a>
+
+        <div class="separator"></div>
+
+        <p class="contact-label">Location</p>
+
+        <address class="body-4" data-strapi="site-settings" data-field="address" data-attr="text"></address>
+
+        <p class="contact-label">Open Time</p>
+
+        <span class="body-4" id="open-hours">Loading...</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Email sending logic -->
+<script>
+  (function () {
+    const form = document.getElementById('reservation-form');
+    const status = document.getElementById('reservation-status');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      status.textContent = 'Sending reservation...';
+
+      // sendForm maps form field names directly to your EmailJS template variables
+      emailjs.sendForm('service_00lxf56', 'template_vvf5z4h', form)
+        .then(function () {
+          status.textContent = 'Reservation sent successfully. Thank you.';
+          form.reset();
+          submitBtn.disabled = false;
+        }, function (error) {
+          console.error('EmailJS error', error);
+          status.textContent = 'Failed to send reservation, please try again or call us.';
+          submitBtn.disabled = false;
+        });
+    });
+  })();
+</script>
+
 
       <!-- 
         - #FEATURES
@@ -800,84 +836,62 @@
         - #EVENT
       -->
 
-      <section class="section event bg-black-10" aria-label="event">
+          <section class="section event bg-black-10" aria-label="event">
         <div class="container">
 
           <p class="section-subtitle label-2 text-center">Recent Updates</p>
-
           <h2 class="section-title headline-1 text-center">Upcoming Event</h2>
 
-          <ul class="grid-list">
+          <ul class="grid-list"
+              data-repeat="events"
+              data-limit="10"
+              data-populate="Photo">
 
-            <li>
-              <div class="event-card has-before hover:shine">
+            <template>
+              <li>
+                <div class="event-card has-before hover:shine">
 
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-1.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
+                  <!-- Image Banner -->
+                  <div class="card-banner img-holder" style="--width:350;--height:450;">
+                    <img data-field="Photo.url"
+                        data-attr="src"
+                        loading="lazy"
+                        alt=""
+                        class="img-cover">
+                  </div>
 
-                  <time class="publish-date label-2" datetime="2022-09-15">15/09/2022</time>
+                  <!-- Card Content -->
+                  <div class="card-content">
+                    <!-- Subtitle (optional) -->
+                    <p class="card-subtitle label-2 text-center"></p>
+
+                    <!-- Event Name -->
+                    <h3 class="card-title title-2 text-center" data-field="Name"></h3>
+
+                    <!-- Event Description -->
+                    <p class="card-description label-1" data-field="Description.0.children.0.text"></p>
+
+                    <!-- Event Date and Time -->
+                    <div class="event-datetime label-2 text-center">
+                      <time class="publish-date" data-field="date" data-format="date"></time>
+                      <span class="event-time" data-field="start_time"></span>
+                      <span class="event-time" data-field="end_time"></span>
+                    </div>
+                  </div>
+
                 </div>
+              </li>
+            </template>
 
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Food, Flavour</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-2.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-08">08/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Healthy Food</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card has-before hover:shine">
-
-                <div class="card-banner img-holder" style="--width: 350; --height: 450;">
-                  <img src="./assets/images/event-3.jpg" width="350" height="450" loading="lazy"
-                    alt="Flavour so good you’ll try to eat with your eyes." class="img-cover">
-
-                  <time class="publish-date label-2" datetime="2022-09-03">03/09/2022</time>
-                </div>
-
-                <div class="card-content">
-                  <p class="card-subtitle label-2 text-center">Recipie</p>
-
-                  <h3 class="card-title title-2 text-center">
-                    Flavour so good you’ll try to eat with your eyes.
-                  </h3>
-                </div>
-
-              </div>
-            </li>
 
           </ul>
 
-          <a href="#" class="btn btn-primary">
-            <span class="text text-1">View Our Blog</span>
 
-            <span class="text text-2" aria-hidden="true">View Our Blog</span>
+
+          <a href="/events/" class="btn btn-primary">
+            <span class="text text-1">View Our Events</span>
+
+            <span class="text text-2" aria-hidden="true">View Our Events</span>
           </a>
 
         </div>
@@ -907,10 +921,13 @@
 
           <a data-strapi="site-settings" data-field="contact_email" data-attr="href" data-prefix="mailto:" class="body-4 contact-link"><span data-strapi="site-settings" data-field="contact_email" data-attr="text">Loading...</span></a>
 
-          <a href="tel:+88123123456" class="body-4 contact-link">Booking Request : +88-123-123456</a>
+          <a data-strapi="site-settings" data-field="phone" data-attr="href" data-prefix="tel:" class="body-4 contact-link">
 
-          <p class="body-4">
-            Open : 09:00 am - 01:00 pm
+            <span class="body-4 contact-link" data-strapi="site-settings" data-field="phone" data-attr="text">Loading...</span>
+          </a>
+
+          <p class="body-4" id="open-hours">
+            Loading...
           </p>
 
           <div class="wrapper">
@@ -922,7 +939,6 @@
           <p class="title-1">Get News & Offers</p>
 
           <p class="label-1">
-            Subscribe us & Get <span class="span">25% Off.</span>
           </p>
 
           <form action="" class="input-wrapper">
